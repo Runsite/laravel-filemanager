@@ -26,14 +26,11 @@ following command:
 
     `composer require tsawler/laravel-filemanager`
 
-1. Next run composer update to install the package from packagist:
-
-    `composer update`
 
 1. Add the following to the providers array in config/app.php:
 
     ```
-    Tsawler\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
+    Runsite\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
     Intervention\Image\ImageServiceProvider::class,
     Collective\Html\HtmlServiceProvider::class,
     ```
@@ -84,14 +81,14 @@ CKEditor instance as follows:
     ```javascript
         <script>
             CKEDITOR.replace( 'editor', {
-                filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
-                filebrowserBrowseUrl: '/laravel-filemanager?type=Files'
+                filebrowserImageBrowseUrl: asset('/runsite/laravel-filemanager?type=Images'),
+                filebrowserBrowseUrl: asset('/runsite/laravel-filemanager?type=Files')
             });
         </script>
     ```
     
     Here, "editor" is the id of the textarea you are transforming to a CKEditor instance. Note that if
-    you are using a custom route you will have to change `/laravel-filemanager?type=Images` to correspond
+    you are using a custom route you will have to change `/runsite/laravel-filemanager?type=Images` to correspond
     to whatever route you have chosen. Be sure to include the `?type=Images` parameter.
     
     
@@ -105,8 +102,8 @@ simply wrap the routes in a group, perhaps like this:
 
     Route::group(array('before' => 'auth'), function ()
     {
-        Route::get('/laravel-filemanager', '\Tsawler\Laravelfilemanager\controllers\LfmController@show');
-        Route::post('/laravel-filemanager/upload', '\Tsawler\Laravelfilemanager\controllers\LfmController@upload');
+        Route::get('/runsite/laravel-filemanager', '\Runsite\Laravelfilemanager\controllers\LfmController@show');
+        Route::post('/runsite/laravel-filemanager/upload', '\Runsite\Laravelfilemanager\controllers\LfmController@upload');
         // list all lfm routes here...
     });
     
@@ -119,7 +116,7 @@ This package is released under the terms of the [MIT License](http://opensource.
 
 The MIT License (MIT)
 
-Copyright (c) 2015 Trevor Sawler
+Copyright (c) 2015 Trevor Sawler, Runsite LLC
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
