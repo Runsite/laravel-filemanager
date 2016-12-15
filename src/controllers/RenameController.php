@@ -1,6 +1,6 @@
-<?php namespace Tsawler\Laravelfilemanager\controllers;
+<?php namespace Runsite\Laravelfilemanager\controllers;
 
-use Tsawler\Laravelfilemanager\controllers\Controller;
+use Runsite\Laravelfilemanager\controllers\Controller;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
@@ -17,10 +17,16 @@ class RenameController extends Controller {
 
     function __construct()
     {
+      $this->middleware(function ($request, $next) {
+
         if (Session::get('lfm_type') == "Images")
             $this->file_location = Config::get('lfm.images_dir');
         else
             $this->file_location = Config::get('lfm.files_dir');
+
+        return $next($request);
+      });
+
     }
 
 

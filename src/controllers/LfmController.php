@@ -1,6 +1,6 @@
-<?php namespace Tsawler\Laravelfilemanager\controllers;
+<?php namespace Runsite\Laravelfilemanager\controllers;
 
-use Tsawler\Laravelfilemanager\controllers\Controller;
+use Runsite\Laravelfilemanager\controllers\Controller;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
@@ -24,6 +24,8 @@ class LfmController extends Controller {
      */
     public function __construct()
     {
+      $this->middleware(function ($request, $next) {
+
         if ((Session::has('lfm_type')) && (Session::get('lfm_type') == 'Files'))
         {
             $this->file_location = Config::get('lfm.files_dir');
@@ -31,6 +33,10 @@ class LfmController extends Controller {
         {
             $this->file_location = Config::get('lfm.images_dir');
         }
+
+        return $next($request);
+      });
+
     }
 
 

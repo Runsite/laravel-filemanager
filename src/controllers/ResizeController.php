@@ -1,6 +1,6 @@
-<?php namespace Tsawler\Laravelfilemanager\controllers;
+<?php namespace Runsite\Laravelfilemanager\controllers;
 
-use Tsawler\Laravelfilemanager\controllers\Controller;
+use Runsite\Laravelfilemanager\controllers\Controller;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\View;

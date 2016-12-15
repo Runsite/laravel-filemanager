@@ -1,42 +1,41 @@
 <?php
-Route::group(array('middleware' => Config::get('lfm.middleware')), function () // make sure authenticated
-{
 
-    Route::get('sample-ckeditor-integration', function () {
-        return \Illuminate\Support\Facades\View::make('editor');
-    });
+Route::group(['namespace' => 'Runsite\Laravelfilemanager\controllers', 'prefix'=>'runsite/laravel-filemanager', 'middleware' => ['web']], function() {
 
-    // Show LFM
-    Route::get('/laravel-filemanager', 'Tsawler\Laravelfilemanager\controllers\LfmController@show');
+  Route::get('sample-ckeditor-integration', function () {
+      return \Illuminate\Support\Facades\View::make('editor');
+  });
 
+  // Show LFM
+  Route::get('/', ['as'=>'runsite.laravel-filemanager.show', 'uses'=>'LfmController@show']);
 
-    // upload
-    Route::any('/laravel-filemanager/upload', 'Tsawler\Laravelfilemanager\controllers\UploadController@upload');
+  // upload
+  Route::any('/upload', ['as'=>'runsite.laravel-filemanager.upload', 'uses'=>'UploadController@upload']);
 
-    // list images & files
-    Route::get('/laravel-filemanager/jsonimages', 'Tsawler\Laravelfilemanager\controllers\ItemsController@getImages');
-    Route::get('/laravel-filemanager/jsonfiles', 'Tsawler\Laravelfilemanager\controllers\ItemsController@getFiles');
+  // list images & files
+  Route::get('/jsonimages', ['as'=>'runsite.laravel-filemanager.jsonimages', 'uses'=>'ItemsController@getImages']);
+  Route::get('/jsonfiles', ['as'=>'runsite.laravel-filemanager.jsonfiles', 'uses'=>'ItemsController@getFiles']);
 
-    // folders
-    Route::get('/laravel-filemanager/newfolder', 'Tsawler\Laravelfilemanager\controllers\FolderController@getAddfolder');
-    Route::get('/laravel-filemanager/deletefolder', 'Tsawler\Laravelfilemanager\controllers\FolderController@getDeletefolder');
-    Route::get('/laravel-filemanager/folders', 'Tsawler\Laravelfilemanager\controllers\FolderController@getFolders');
+  // folders
+  Route::get('/newfolder', ['as'=>'runsite.laravel-filemanager.newfolder', 'uses'=>'FolderController@getAddfolder']);
+  Route::get('/deletefolder', ['as'=>'runsite.laravel-filemanager.deletefolder', 'uses'=>'FolderController@getDeletefolder']);
+  Route::get('/folders', ['as'=>'runsite.laravel-filemanager.folders', 'uses'=>'FolderController@getFolders']);
 
-    // crop
-    Route::get('/laravel-filemanager/crop', 'Tsawler\Laravelfilemanager\controllers\CropController@getCrop');
-    Route::get('/laravel-filemanager/cropimage', 'Tsawler\Laravelfilemanager\controllers\CropController@getCropimage');
+  // crop
+  Route::get('/crop', ['as'=>'runsite.laravel-filemanager.crop', 'uses'=>'CropController@getCrop']);
+  Route::get('cropimage', ['as'=>'runsite.laravel-filemanager.cropimage', 'uses'=>'CropController@getCropimage']);
 
-    // rename
-    Route::get('/laravel-filemanager/rename', 'Tsawler\Laravelfilemanager\controllers\RenameController@getRename');
+  // rename
+  Route::get('/rename', ['as'=>'runsite.laravel-filemanager.rename', 'uses'=>'RenameController@getRename']);
 
-    // scale/resize
-    Route::get('/laravel-filemanager/resize', 'Tsawler\Laravelfilemanager\controllers\ResizeController@getResize');
-    Route::get('/laravel-filemanager/doresize', 'Tsawler\Laravelfilemanager\controllers\ResizeController@performResize');
+  // scale/resize
+  Route::get('/resize', ['as'=>'runsite.laravel-filemanager.resize', 'uses'=>'ResizeController@getResize']);
+  Route::get('/doresize', ['as'=>'runsite.laravel-filemanager.doresize', 'uses'=>'ResizeController@performResize']);
 
-    // download
-    Route::get('/laravel-filemanager/download', 'Tsawler\Laravelfilemanager\controllers\DownloadController@getDownload');
+  // download
+  Route::get('/download', ['as'=>'runsite.laravel-filemanager.download', 'uses'=>'DownloadController@getDownload']);
 
-    // delete
-    Route::get('/laravel-filemanager/delete', 'Tsawler\Laravelfilemanager\controllers\DeleteController@getDelete');
+  // delete
+  Route::get('/delete', ['as'=>'runsite.laravel-filemanager.delete', 'uses'=>'DeleteController@getDelete']);
 
 });

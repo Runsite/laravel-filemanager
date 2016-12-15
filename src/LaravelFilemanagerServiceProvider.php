@@ -1,4 +1,4 @@
-<?php namespace Tsawler\Laravelfilemanager;
+<?php namespace Runsite\Laravelfilemanager;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Config;
@@ -17,7 +17,7 @@ class LaravelFilemanagerServiceProvider extends ServiceProvider {
      */
     public function boot()
     {
-        if (Config::get('lfm.use_package_routes'))
+        if (Config::get('lfm.use_package_routes') === NULL or Config::get('lfm.use_package_routes') === true)
             include __DIR__ . '/routes.php';
 
         $this->loadTranslationsFrom(__DIR__.'/lang', 'laravel-filemanager');

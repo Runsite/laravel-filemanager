@@ -1,6 +1,6 @@
-<?php namespace Tsawler\Laravelfilemanager\controllers;
+<?php namespace Runsite\Laravelfilemanager\controllers;
 
-use Tsawler\Laravelfilemanager\controllers\Controller;
+use Runsite\Laravelfilemanager\controllers\Controller;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\View;
@@ -40,14 +40,13 @@ class CropController extends Controller {
         $dataY = Input::get('dataY');
         $dataHeight = Input::get('dataHeight');
         $dataWidth = Input::get('dataWidth');
-
         // crop image
-        $image = Image::make(public_path() . $img);
+        $image = Image::make(public_path($img));
         $image->crop($dataWidth, $dataHeight, $dataX, $dataY)
-            ->save(public_path() . $img);
+            ->save(public_path($img));
 
         // make new thumbnail
-        $thumb_img = Image::make(public_path() . $img);
+        $thumb_img = Image::make(public_path($img));
         $thumb_img->fit(200, 200)
             ->save(base_path() . "/" . Config::get('lfm.images_dir') . $dir . "/thumbs/" . basename($img));
     }

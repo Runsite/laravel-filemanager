@@ -1,11 +1,11 @@
 {
   "name": "runsite/laravel-filemanager",
-  "description": "A file upload/editor intended for use with Laravel 5 and CKEditor",
+  "description": "A file upload/editor intended for use with Laravel 5.3.* and CKEditor",
   "license": "MIT",
   "authors": [
     {
-      "name": "Trevor Sawler",
-      "email": "trevor.sawler@gmail.com"
+      "name": "Runsite LLC",
+      "email": "runsite.dev@gmail.com"
     }
   ],
   "require": {
@@ -16,7 +16,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Tsawler\\Laravelfilemanager\\": "src/"
+      "Runsite\\Laravelfilemanager\\": "src/"
     }
   }
 }

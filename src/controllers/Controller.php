@@ -1,4 +1,4 @@
-<?php namespace Tsawler\Laravelfilemanager\controllers;
+<?php namespace Runsite\Laravelfilemanager\controllers;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
