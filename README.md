@@ -81,8 +81,8 @@ CKEditor instance as follows:
     ```javascript
         <script>
             CKEDITOR.replace( 'editor', {
-                filebrowserImageBrowseUrl: {{asset('/runsite/laravel-filemanager?type=Images')}},
-                filebrowserBrowseUrl: {{asset('/runsite/laravel-filemanager?type=Files')}}
+                filebrowserImageBrowseUrl: '{{asset('/runsite/laravel-filemanager?type=Images')}}',
+                filebrowserBrowseUrl: '{{asset('/runsite/laravel-filemanager?type=Files')}}'
             });
         </script>
     ```
