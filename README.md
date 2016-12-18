@@ -24,7 +24,7 @@ This package is written specifically for Laravel 5, and will integrate seamlessl
 1. Installation is done through composer and packagist. From within your project root directory, execute the 
 following command:
 
-    `composer require tsawler/laravel-filemanager`
+    `composer require runsite/laravel-filemanager`
 
 
 1. Add the following to the providers array in config/app.php:
