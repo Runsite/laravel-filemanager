@@ -85,7 +85,18 @@ class UploadController extends Controller {
 
             $new_filename = Str::slug(str_replace($extension, '', $filename)) . "." . $extension;
 
-            Input::file('file_to_upload')->move($destinationPath, $new_filename);
+            $image = Image::make($file->getRealPath());
+
+            list($originalWidth, $originalHeight) = getimagesize($file->getRealPath());
+
+            if($originalWidth > config('lfm.max_image_width'))
+            {
+                $image->resize(config('lfm.max_image_width'), null, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
+            }
+
+            $image->save($destinationPath.$new_filename);
 
             if (!File::exists($destinationPath . "thumbs"))
             {
