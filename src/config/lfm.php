@@ -9,6 +9,8 @@ return [
 
     'files_dir'          => 'public/vendor/laravel-filemanager/files/',
     'files_url'          => '/vendor/laravel-filemanager/files/',
+    
+    'max_image_width'   => 1700,
 
     'allowed_file_types'    => [
         // Allowed file types.
